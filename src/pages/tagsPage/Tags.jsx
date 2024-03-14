@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTagsCollection } from "../../store/tagsSlice";
+import { NavLink } from "react-router-dom";
+import { addcardName, fetchTagsCards } from "../../store/tagsCardSlice";
 
 function Tags() {
   const dispatch = useDispatch();
@@ -9,6 +11,11 @@ function Tags() {
   useEffect(() => {
     dispatch(fetchTagsCollection());
   }, []);
+
+  const handelonclick = (inputdata) => {
+    dispatch(fetchTagsCards(inputdata));
+    dispatch(addcardName(inputdata));
+  };
 
   return (
     <div className="py-20 px-10">
@@ -27,9 +34,16 @@ function Tags() {
               <span className="font-bold">{item.quoteCount}</span>
             </p>
             <p>Date Added : {item.dateAdded}</p>
-            <button className="bg-green-800 text-white rounded-2xl py-2 font-semibold shadow-md shadow-black w-fit px-4 flex self-center mt-5">
-              Click me
-            </button>
+            <div className="flex justify-center">
+              <NavLink to={`cards/${item.name}`}>
+                <button
+                  className="bg-green-800 text-white rounded-2xl py-2 font-semibold shadow-md shadow-black w-fit px-4 flex self-center mt-5"
+                  onClick={() => handelonclick(item.name)}
+                >
+                  Click me
+                </button>
+              </NavLink>
+            </div>
           </div>
         ))}
       </div>
