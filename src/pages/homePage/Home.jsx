@@ -16,7 +16,7 @@ function Home() {
     return <Loding />;
   }
   return (
-    <div className="flex justify-center items-center h-[calc(100vh-100px)] ">
+    <div className="flex justify-center items-center h-[calc(100vh-100px)] px-4 sm:px-0">
       <Cards />
     </div>
   );

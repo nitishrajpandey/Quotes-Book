@@ -21,15 +21,14 @@ export const fetchTagsCollectionApi = async () => {
 }
 
 
-export const fetchTagsCardsApi = async (inputdata) => {
+export const fetchTagsCardsApi = async (inputdata, pageNo) => {
     try {
-        const { data } = await axios.get(`https://api.quotable.io/quotes?tags=${inputdata}`)
+        const { data } = await axios.get(`https://api.quotable.io/quotes?tags=${inputdata}&page=${pageNo}`)
         return data
     } catch (error) {
         throw error
     }
 }
-// https://api.quotable.io/quotes?tags=${inputdata}&page=${num}
 
 
 
@@ -52,3 +51,4 @@ export const fetchAuthorQuotesApi = async (authorsName, pageno) => {
         throw error
     }
 }
+// https://api.quotable.io/quotes?tags=${inputdata}&page=${num}

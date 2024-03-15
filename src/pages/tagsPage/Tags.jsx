@@ -21,14 +21,15 @@ function Tags() {
     return <Loding />;
   }
   return (
-    <div className="py-20 px-10">
-      <div className="flex flex-wrap gap-10 justify-around">
+    <div className="py-10 px-4 sm:px-10">
+      {/* <h1 className="text-center py-10 text-4xl capitalize font-bold">tags</h1> */}
+      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 ">
         {data.map((item) => (
           <div
             key={item._id}
-            className=" p-4 min-w-[300px] flex flex-col gap-1 bg-[#F0F0F0] rounded-2xl shadow-lg shadow-black"
+            className=" p-4  flex flex-col gap-5 mb-10 overflow-hidden bg-[#F0F0F0] rounded-2xl shadow-md shadow-black"
           >
-            <h1 className="text-center py-2 font-semibold text-xl">
+            <h1 className="text-center py-2 font-semibold text-xl font-serif italic">
               {item.name}
             </h1>
             <p className="capitalize">
@@ -40,7 +41,7 @@ function Tags() {
             <div className="flex justify-center">
               <NavLink to={`cards/${item.name}`}>
                 <button
-                  className="bg-green-800 text-white rounded-2xl py-2 font-semibold shadow-md shadow-black w-fit px-4 flex self-center mt-5"
+                  className="bg-green-800 text-white rounded-xl italic py-2 font-semibold shadow-md shadow-black w-fit px-6 flex self-center mt-5"
                   onClick={() => handelonclick(item.name)}
                 >
                   Click me

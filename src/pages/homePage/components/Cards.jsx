@@ -30,15 +30,15 @@ function Cards() {
           key={item._id}
         >
           <div>
-            <h1 className="text-center font-bold text-2xl font-mono py-1">
+            <h1 className="text-center font-bold text-2xl sm:text-3xl font-mono py-1">
               Quote of the Day
             </h1>
             <p className=" text-center py-4">
               <RiDoubleQuotesL className="inline" />
-              <span className="px-3">{item.content}</span>
+              <span className="px-3 sm:text-xl">{item.content}</span>
               <RiDoubleQuotesR className="inline " />
             </p>
-            <h3 className="text-right pb-3 font-semibold">
+            <h3 className="text-right pb-3 sm:text-xl font-semibold">
               <GoDash className="inline" /> {item.author}
             </h3>
           </div>
