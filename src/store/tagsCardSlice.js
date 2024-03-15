@@ -19,7 +19,10 @@ export const tagsCardSlice = createSlice({
     name: "tagsCard",
     initialState: {
         tagsCardStore: [],
-        cardname: null
+        cardname: null,
+        page: null,
+        totalPage: null,
+        lodingStaus: false
     },
     reducers: {
         addcardName: (state, action) => {
@@ -29,7 +32,11 @@ export const tagsCardSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchTagsCards.fulfilled, (state, action) => {
-                state.tagsCardStore = action.payload
+                state.tagsCardStore = action.payload,
+                    state.lodingStaus = false
+            })
+            .addCase(fetchTagsCards.pending, (state, action) => {
+                state.lodingStaus = true
             })
     }
 })

@@ -3,20 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTagsCollection } from "../../store/tagsSlice";
 import { NavLink } from "react-router-dom";
 import { addcardName, fetchTagsCards } from "../../store/tagsCardSlice";
+import Loding from "../../components/Loding/Loding";
 
 function Tags() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.tags.tagsCollection);
+  const loding = useSelector((state) => state.tags.lodingStatus);
   console.log(data);
   useEffect(() => {
     dispatch(fetchTagsCollection());
   }, []);
 
   const handelonclick = (inputdata) => {
-    dispatch(fetchTagsCards(inputdata));
     dispatch(addcardName(inputdata));
   };
-
+  if (loding) {
+    return <Loding />;
+  }
   return (
     <div className="py-20 px-10">
       <div className="flex flex-wrap gap-10 justify-around">

@@ -16,7 +16,8 @@ export const fetchTagsCollection = createAsyncThunk("fetchTagsCollection", async
 export const tagsSlice = createSlice({
     name: "tags",
     initialState: {
-        tagsCollection: []
+        tagsCollection: [],
+        lodingStatus: false
     },
     reducers: {
 
@@ -24,7 +25,11 @@ export const tagsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchTagsCollection.fulfilled, (state, action) => {
-                state.tagsCollection = action.payload
+                state.tagsCollection = action.payload,
+                    state.lodingStatus = false
+            }).addCase(fetchTagsCollection.pending, (state, action) => {
+                state.tagsCollection = action.payload,
+                    state.lodingStatus = true
             })
     }
 

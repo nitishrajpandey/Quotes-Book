@@ -11,9 +11,11 @@ import { GoDash } from "react-icons/go";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { fetchTagsCards } from "../../store/tagsCardSlice";
 import { useParams } from "react-router-dom";
+import Loding from "../../components/Loding/Loding";
 
 function CardDetails() {
   const data = useSelector((state) => state.tagsCard.tagsCardStore);
+  const loding = useSelector((state) => state.tagsCard.lodingStaus);
   const { id } = useParams();
   console.log(id);
   const dispatch = useDispatch();
@@ -22,6 +24,10 @@ function CardDetails() {
   useEffect(() => {
     dispatch(fetchTagsCards(id));
   }, []);
+
+  if (loding) {
+    return <Loding />;
+  }
   return (
     <>
       <div className="md:columns-2 gap-10  px-10 py-10">
